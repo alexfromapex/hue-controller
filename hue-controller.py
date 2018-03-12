@@ -8,9 +8,14 @@ import sys
 import signal
 from threading import Thread
 import threading
+import logging
 
-b = Bridge('192.168.1.76')
-lights = b.get_light_objects('id')
+def ask(parent=None, message='', default_value=''):
+    dlg = wx.TextEntryDialog(parent, message, value=default_value)
+    dlg.ShowModal()
+    result = dlg.GetValue()
+    dlg.Destroy()
+    return result
 
 def lightFunc(self):
     try:
@@ -63,7 +68,7 @@ class Frame(wx.Frame):
         hslider = wx.Slider(panel, -1, b.get_light(1,'bri'), 0, 254,
             size=(250, -1),
             style=wx.SL_HORIZONTAL | wx.SL_AUTOTICKS | wx.SL_LABELS )
-        hslider.SetTickFreq(5, 1)
+        hslider.SetTickFreq(5)
         hslider.Bind(wx.EVT_SCROLL, scrollHandler)
         
         box.Add(btn_rand_clr, 0, wx.ALL, 10)
@@ -91,8 +96,13 @@ class LightThread(threading.Thread):
 
 if __name__=='__main__':
     try:
+        logging.basicConfig()
         light_thread = LightThread(lightFunc)
         app=wx.App(False)
+        bridge_ip = ask(message='What is your bridge IP address?')
+        print u"Bridge IP is: "+bridge_ip
+        b = Bridge(bridge_ip)
+        lights = b.get_light_objects('id')
         frame=Frame(light_thread)
         app.MainLoop()
     except KeyboardInterrupt:
