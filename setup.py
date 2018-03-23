@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from distutils.core import setup
 
 setup(
@@ -9,4 +11,5 @@ setup(
     packages=['wx','phue'],
     license='MIT',
     long_description=open('README.md').read(),
+    url = 'https://github.com/alexfromapex/hue-controller'
 )
