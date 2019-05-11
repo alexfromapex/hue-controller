@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from lights import lightFunc as lf
 from lights import allOn as ao
 from lights import allOff as aoff
