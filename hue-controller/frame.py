@@ -32,8 +32,8 @@ class Frame(wx.Frame):
 
 
         for light_num,light in enumerate(globals.b.lights):
-            print "light_num: "+str(type(light_num))
-            print "light: "+str(light)
+            print("light_num: "+str(type(light_num)))
+            print("light: "+str(light))
             light_label = wx.StaticText(panel, label=globals.b.get_light(light_num+1,'name')+": ")
             hslider = wx.Slider(panel, -1, globals.b.get_light(light_num+1,'bri'), 0, 254,
                 size=(250, -1),

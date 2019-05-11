@@ -21,5 +21,5 @@ def scrollHandler(event, light_id):
         else:
             globals.b.set_light(light_id,'on',False)
     except Exception:
-        print sys.exc_info()
+        print(sys.exc_info())
         # print repr(Exception)

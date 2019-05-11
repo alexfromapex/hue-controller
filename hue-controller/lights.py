@@ -32,8 +32,8 @@ def lightFunc(self):
             color1 = random.random()
             color2 = random.random()
             name = globals.b.get_light(light_id,'name')
-            print name,':'
-            print color1,color2
+            print(name,':')
+            print(color1,color2)
             globals.b.set_light(light_id, 'xy',[color1,color2])
     except KeyboardInterrupt:
         sys.exit(0)

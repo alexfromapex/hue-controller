@@ -35,7 +35,7 @@ if __name__=='__main__':
             file.write('bridge={\'ip\':\''+bridge_ip+'\'}')
             file.close()
         if bridge_ip:
-            print u"Bridge IP is: "+bridge_ip
+            print(u"Bridge IP is: "+bridge_ip)
             try:
                 globals.b = Bridge(bridge_ip)
                 globals.lights = globals.b.get_light_objects('id')
@@ -43,15 +43,15 @@ if __name__=='__main__':
                 frame.Maximize()
                 app.MainLoop()
             except BridgeButtonException:
-                print "Button on bridge needs to be pressed within 30 seconds. Please try again."
+                print("Button on bridge needs to be pressed within 30 seconds. Please try again.")
                 globals.light_thread.stop()
                 sys.exit(0)
             except (SocketError, PhueRequestTimeout) as e:
-                print "Could not connect to bridge: "+str(e)
+                print("Could not connect to bridge: "+str(e))
                 globals.light_thread.stop()
                 sys.exit(0)
         else:
-            print "Quitting..."
+            print("Quitting...")
             globals.light_thread.stop()
             sys.exit(0)
     except KeyboardInterrupt:
