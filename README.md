@@ -7,8 +7,10 @@ A front-end graphical interface for controlling multiple Philips Hue lights crea
 
 Installation on Mac
 =============
-1. `sudo -H pip3 install --upgrade pip3`
-2. `pip3 install phue`
-3. `brew install wxmac`
 
-and then test it works with `python3 hue-controller.py`
+This app requires Python 3
+
+1. git clone https://github.com/alexfromapex/hue-controller
+2. cd hue-controller/
+3. make install-app
+4. open /Applications/Hue_Controller.app
